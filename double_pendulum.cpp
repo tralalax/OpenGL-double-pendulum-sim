@@ -298,28 +298,6 @@ int main()
     glBindVertexArray(0);
 
 
-
-    // -- line vertices buffer
-    std::vector<glm::vec4> linesVerti;
-
-    // Vertex Array Object, Vertex Buffer Object
-    GLuint lVAO, lVBO;
-    //CreateVBOVAO(VAO, VBO, vertices, sizeof(vertices));
-    glGenVertexArrays(1, &lVAO);
-    glGenBuffers(1, &lVBO);
-    // Bind VAO
-    glBindVertexArray(lVAO);
-    // Bind and fill VBO
-    glBindBuffer(GL_ARRAY_BUFFER, lVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * linesVerti.size(), &linesVerti[0], GL_STATIC_DRAW);
-    // Vertex attribute (VAO)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    glBindVertexArray(0);
-
-
-
-
     // shader creation and linking
     GLuint shaderProgram = CreateShaderProgram(vertexShaderRota, fragmentShaderSource);
     glUseProgram(shaderProgram);
@@ -363,25 +341,6 @@ int main()
             buildCircle(0.1, 64, posVec[0][0], posVec[0][1], circleVerti);
             // double pendulum
             buildCircle(0.1, 64, posVec[1][0], posVec[1][1], circleVerti);
-
-
-
-
-
-            
-            std::vector<glm::vec3> line_vertex;
-
-            glm::vec3 p1 = { 0,0,0 };
-            glm::vec3 p2 = { 0,0,0 };
-            glm::vec3 p3= { posVec[0][0], posVec[0][1], 0 };
-
-            circleVerti.push_back(p1);
-            circleVerti.push_back(p2);
-            circleVerti.push_back(p3);
-
-
-            //glVertexPointer(2, GL_FLOAT, 0, line_vertex);
-            //glDrawArrays(GL_LINES, 0, 2);
         }
 
 
